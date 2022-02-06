@@ -18,9 +18,10 @@ jobs:
       - name: clone
         run: mkdir downloads
       - name: clone
-        run: touch downloads/zlib-1.2.11.1-motley.tar.gz
-      - name: clone
         run: git clone https://github.com/madler/zlib.git --branch develop downloads/1.2.11.1-motley
+      - name: targz
+        run: tar -cvzf zlib-1.2.11.1-motley.tar.gz 1.2.11.1-motley
+        working-directory: downloads
       - name: run build_zlib
         run: ANDROID_NDK=$ANDROID_NDK_HOME ./build_zlib --zlib-version 1.2.11.1-motley
         
